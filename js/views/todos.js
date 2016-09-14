@@ -17,6 +17,7 @@ app.TodoView = Backbone.View.extend({
     'dblclick label': 'edit',
     'click .destroy': 'clear',
     'click .toggle': 'toggleCompleted',
+    'click .add-description': 'addDescription',
     'click .remove-description': 'removeDescription',
     'keypress .edit': 'updateOnEnter',
     'keypress textarea': 'updateOnEnter',
@@ -40,9 +41,7 @@ app.TodoView = Backbone.View.extend({
     this.$el.toggleClass( 'completed', this.model.get('completed') );
     this.toggleVisible(); 
 
-    if(this.$textarea.val().trim()) {
-      this.$('.row-options-description').append('<button class="remove-description" title="remove description from todo"></button>');
-    }
+    if(this.$textarea.val().trim()) { this.$textarea.removeClass('hidden'); }
 
     return this;
   },
@@ -106,5 +105,15 @@ app.TodoView = Backbone.View.extend({
     this.model.save({
       description: ''
     });
+
+    this.$textarea.addClass('hidden');
+    this.$('.add-description').removeClass('hidden');
+    this.$('.remove-description').addClass('hidden');
+  },
+
+  addDescription: function() {
+    this.$textarea.removeClass('hidden');
+    this.$('.add-description').addClass('hidden');
+    this.$('.remove-description').removeClass('hidden');
   }
 });

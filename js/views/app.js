@@ -18,8 +18,6 @@
       'keypress #new-todo': 'createOnEnter',
       'click #clear-completed': 'clearCompleted',
       'click #toggle-all': 'toggleAllComplete',
-      'click .add-description': 'addDescriptionElement',
-      'click .remove-description': 'removeDescriptionElement',
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -121,19 +119,5 @@
           'completed': completed
         });
       });
-    },
-
-    // Hide and show specific elements
-    addDescriptionElement: function( e ) {
-      $(e.currentTarget).parent().parent().find('.row-options').addClass('hidden');
-      $(e.currentTarget).parent().parent().find('.toggle:not(.toggle-description)').addClass('hidden');
-
-      $(e.currentTarget).parent().parent().find('textarea').removeClass('hidden');
-      $(e.currentTarget).parent().parent().find('.toggle-description').removeClass('hidden');
-      $(e.currentTarget).parent().parent().find('.row-options-description').removeClass('hidden'); 
-    },
-
-    removeDescriptionElement: function( e ) {
-      $(e.currentTarget).parent().parent().find('textarea').remove();
     }
 });

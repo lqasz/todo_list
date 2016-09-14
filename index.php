@@ -29,27 +29,21 @@
 		<!-- Underscore.js template used when we add some todo -->
 		<script type="text/template" id="item-template">
 			<div class="view">
-				<% if (description) { %>
-					<input class="toggle toggle-description" type="checkbox" <%= completed ? 'checked' : '' %>>
-					<label><%= title %></label>
-					<textarea><%= description %></textarea>
-					<div class="row-options-description">
-						<button class="destroy new-y" title="delete todo"></button>
-					</div>
-				<% } else { %>
-					<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
-					<input class="toggle toggle-description hidden" type="checkbox" <%= completed ? 'checked' : '' %>>
-					<label><%= title %></label>
-					<textarea class="hidden"><%= description %></textarea>
-					<div class="row-options">
+				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+				<label><%= title %></label>
+				
+				<div class="row-options">
+					<button class="destroy" title="delete todo"></button>
+					<% if (description) { %>
+						<button class="remove-description" title="remove description from todo"></button>
+						<button class="add-description hidden" title="add description to todo"></button>
+					<% } else { %>
+						<button class="remove-description hidden" title="remove description from todo"></button>
 						<button class="add-description" title="add description to todo"></button>
-						<button class="destroy" title="delete todo"></button>
-					</div>
-					<div class="row-options-description hidden">
-						<button class="destroy new-y" title="delete todo"></button>
-					</div>
-				<% } %>
+					<% } %>
+				</div>
 			</div>
+			<textarea class="hidden"><%= description %></textarea>
 			<input class="edit new-todo" value="<%= title %>">
 		</script>
 
