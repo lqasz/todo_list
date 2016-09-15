@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<input class="edit new-todo" value="<%= title %>">
-			<textarea class="hidden"><%= description %></textarea>
+			<textarea class="hidden" disabled><%= description %></textarea>
 		</script>
 
 		<!-- Underscore.js template used to route into filtered todos  -->

@@ -15,6 +15,7 @@ app.TodoView = Backbone.View.extend({
   // The DOM events specific to an item.
   events: {
     'dblclick label': 'edit',
+    'dblclick textarea': 'editDescription',
     'click .destroy': 'clear',
     'click .toggle': 'toggleCompleted',
     'click .add-description': 'addDescription',
@@ -97,9 +98,14 @@ app.TodoView = Backbone.View.extend({
   updateOnEnter: function( e ) {
     if ( e.which === ENTER_KEY && !e.shiftKey) {
       this.close();
+      this.$textarea.attr('disabled', 'disabled');
     } else if( e.which === ENTER_KEY && e.shiftKey ) {
       this.value = "\n";
     }
+  },
+  editDescription: function() {
+    this.$textarea.removeAttr('disabled');
+    this.$textarea.focus();
   },
 
   removeDescription: function() {
@@ -120,7 +126,7 @@ app.TodoView = Backbone.View.extend({
 
   changePriority: function( e ) {
     var priority = this.$(e.currentTarget).val();
-    
+
     this.model.save({
       priority: priority
     });
