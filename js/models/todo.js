@@ -10,6 +10,11 @@ app.Todo = Backbone.Model.extend({
   defaults: {
     title: '',
     description: '',
+    priority: 'Low',
+    options: {
+      Low: 'Height',
+      Height: 'Low'
+    },
     completed: false
   },
 

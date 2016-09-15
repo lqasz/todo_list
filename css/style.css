@@ -204,7 +204,7 @@ label[for='toggle-all'] {
 .todo-list li label {
 	white-space: pre-line;
 	word-break: break-all;
-	padding: 15px 60px 15px 15px;
+	padding: 15px 160px 15px 15px;
 	margin-left: 45px;
 	display: block;
 	line-height: 1.2;
@@ -223,6 +223,11 @@ label[for='toggle-all'] {
     border-style: dotted;
     color: #4d4d4d;
     font-size: 16px;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .todo-list li.completed label, .todo-list li.completed textarea {
@@ -231,14 +236,30 @@ label[for='toggle-all'] {
 	opacity: 0.6;
 }
 
+.todo-list li.completed #priority {
+	background-color: #888;
+}
+
 .todo-list li .row-options {
 	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 35%;
+	width: 26%;
 	height: 45%;
+}
+
+#priority {
+	margin-top: 11%;
+	color: #FEE88E;
+    background-color: #4d4d4d;
+    border-radius: 5px;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .todo-list li button {
@@ -261,6 +282,7 @@ label[for='toggle-all'] {
 
 .todo-list li .destroy:hover {
 	color: #af5b5e;
+	cursor: pointer;
 }
 
 .todo-list li .destroy:after {
@@ -274,6 +296,7 @@ label[for='toggle-all'] {
 
 .todo-list li .add-description:hover {
 	color: #6ea83c;
+	cursor: pointer;
 }
 
 .todo-list li .add-description:after {
@@ -282,12 +305,13 @@ label[for='toggle-all'] {
 
 .todo-list li .remove-description {
 	font-size: 50px;
-	color: #FE6250;
+	color: #FE7675;
 	margin-top: -7px;
 }
 
 .todo-list li .remove-description:hover {
 	color: #FE0405;
+	cursor: pointer;
 }
 
 .todo-list li .remove-description:after {

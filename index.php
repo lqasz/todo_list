@@ -33,6 +33,10 @@
 				<label><%= title %></label>
 				
 				<div class="row-options">
+					<select id="priority" <%= completed ? 'disabled' : '' %>>
+						<option value="<%= priority %>"><%= priority %></option>
+						<option value="<%= options[priority] %>"><%= options[priority] %></option>
+					</select>
 					<button class="destroy" title="delete todo"></button>
 					<% if (description) { %>
 						<button class="remove-description" title="remove description from todo"></button>
@@ -43,8 +47,8 @@
 					<% } %>
 				</div>
 			</div>
-			<textarea class="hidden"><%= description %></textarea>
 			<input class="edit new-todo" value="<%= title %>">
+			<textarea class="hidden"><%= description %></textarea>
 		</script>
 
 		<!-- Underscore.js template used to route into filtered todos  -->

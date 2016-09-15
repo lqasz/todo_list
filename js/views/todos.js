@@ -19,6 +19,7 @@ app.TodoView = Backbone.View.extend({
     'click .toggle': 'toggleCompleted',
     'click .add-description': 'addDescription',
     'click .remove-description': 'removeDescription',
+    'change #priority': 'changePriority',
     'keypress .edit': 'updateOnEnter',
     'keypress textarea': 'updateOnEnter',
     'blur .edit': 'close'
@@ -115,5 +116,13 @@ app.TodoView = Backbone.View.extend({
     this.$textarea.removeClass('hidden');
     this.$('.add-description').addClass('hidden');
     this.$('.remove-description').removeClass('hidden');
+  },
+
+  changePriority: function( e ) {
+    var priority = this.$(e.currentTarget).val();
+    
+    this.model.save({
+      priority: priority
+    });
   }
 });
