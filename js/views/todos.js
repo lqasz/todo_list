@@ -23,7 +23,8 @@ app.TodoView = Backbone.View.extend({
     'change #priority': 'changePriority',
     'keypress .edit': 'updateOnEnter',
     'keypress textarea': 'updateOnEnter',
-    'blur .edit': 'close'
+    'blur .edit': 'close',
+    'blur textarea': 'blurDescription'
   },
 
   // The TodoView listens for changes to its model, re-rendering. Since there's
@@ -103,9 +104,10 @@ app.TodoView = Backbone.View.extend({
       this.value = "\n";
     }
   },
+
   editDescription: function() {
     this.$textarea.removeAttr('disabled');
-    this.$textarea.focus();
+    this.$textarea.addClass('focus');
   },
 
   removeDescription: function() {
@@ -122,6 +124,12 @@ app.TodoView = Backbone.View.extend({
     this.$textarea.removeClass('hidden');
     this.$('.add-description').addClass('hidden');
     this.$('.remove-description').removeClass('hidden');
+    this.editDescription();
+  },
+
+  blurDescription: function() {
+    this.$textarea.attr('disabled', 'disabled');
+    this.$textarea.removeClass('focus');
   },
 
   changePriority: function( e ) {

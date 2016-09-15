@@ -236,6 +236,12 @@ label[for='toggle-all'] {
 	opacity: 0.6;
 }
 
+.focus {
+	cursor: text;
+    border-left-color: #4d4d4d !important;
+    border-right-color: #4d4d4d !important;
+}
+
 .todo-list li.completed #priority {
 	background-color: #888;
 }
